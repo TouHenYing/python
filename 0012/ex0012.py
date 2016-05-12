@@ -4,15 +4,16 @@ def check(scanner):
     with open('filtered_words.txt','r') as f:
         text = f.read().split()
         for eachline in text:
-            if scanner == eachline:
-              return 'Freedom'
+            if scanner.find(eachline) != -1:
+                return scanner.replace(eachline,'*' * len(eachline))
         else:
-            return 'Human Rights';
+            return scanner
 
 def main():
     scanner = raw_input('please enter your word:')
     result = check(scanner)
-    print 'result:%s' % result;
+    print 'result:',result
 
 if __name__ == '__main__':
     main()
+
